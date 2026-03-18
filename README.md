@@ -8,12 +8,19 @@ Built with Django REST Framework (backend) + React (frontend) + MySQL (database)
 🧩 Key Features
 
 ✅ Create and manage automation workflows
+
 ✅ Define steps (Task, Approval, Notification)
+
 ✅ Rule Engine — dynamic condition evaluation
+
 ✅ Execute workflows with real input data
+
 ✅ Full execution logs with step-by-step tracking
+
 ✅ Audit Log — compliance and history tracking
+
 ✅ Dark / Light mode toggle
+
 ✅ Search and filter workflows
 
 ## Tech Stack
