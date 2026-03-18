@@ -308,6 +308,10 @@ Result: Manager Approval → Finance Notification → COMPLETED ✅
 - Project: NexFlow — Halleyx Full Stack Challenge I 2026
 - Stack: Django REST Framework + React + MySQL
 
+## 🎬 Demo Video
+
+https://github.com/user-attachments/assets/cda4ff15-120d-47d7-adb6-f90e68a5e188
+
 
 ## Screenshots
 <img width="1902" height="910" alt="Screenshot 2026-03-18 092308" src="https://github.com/user-attachments/assets/fe90b4cb-8402-4848-a0fe-6ebdc86f1ed9" />
@@ -320,9 +324,8 @@ Result: Manager Approval → Finance Notification → COMPLETED ✅
 
 <img width="1905" height="835" alt="Screenshot 2026-03-18 092547" src="https://github.com/user-attachments/assets/c981200a-cf0b-404e-a82a-c0ae4e8ca2de" />
 
-## 🎬 Demo Video
 
-https://github.com/user-attachments/assets/cda4ff15-120d-47d7-adb6-f90e68a5e188
+
 
 
 
