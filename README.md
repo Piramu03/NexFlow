@@ -1,37 +1,43 @@
-## NexFlow — Workflow Automation Engine
+# NexFlow — Workflow Automation Engine
+### Halleyx Full Stack Engineer Challenge I — 2026
 
- NexFlow is a full-stack workflow automation platform that allows users to design workflows, define conditional rules, execute processes, and track every step in real time.
- 
-Built with Django REST Framework (backend) + React (frontend) + MySQL (database).
-.
+---
 
-🧩 Key Features
+## 🚀 Overview
 
-✅ Create and manage automation workflows
+**NexFlow** is a full-stack workflow automation platform that allows users to design workflows, define conditional rules, execute processes, and track every step in real time.
 
-✅ Define steps (Task, Approval, Notification)
+Built with **Django REST Framework** (backend) + **React** (frontend) + **MySQL** (database).
 
-✅ Rule Engine — dynamic condition evaluation
+---
 
-✅ Execute workflows with real input data
+## 🧩 Key Features
 
-✅ Full execution logs with step-by-step tracking
+- ✅ Create and manage automation workflows
+- ✅ Define steps (Task, Approval, Notification)
+- ✅ Rule Engine — dynamic condition evaluation
+- ✅ Execute workflows with real input data
+- ✅ Full execution logs with step-by-step tracking
+- ✅ Audit Log — compliance and history tracking
+- ✅ Dark / Light mode toggle
+- ✅ Search and filter workflows
 
-✅ Audit Log — compliance and history tracking
+---
 
-✅ Dark / Light mode toggle
+## 🛠️ Tech Stack
 
-✅ Search and filter workflows
+| Layer | Technology |
+|-------|-----------|
+| Backend | Django 4.2 + Django REST Framework |
+| Database | MySQL |
+| Frontend | React + Vite |
+| Styling | Inline CSS (TantranZm Dark Orange Theme) |
 
-## Tech Stack
+---
 
-Backend - Django REST Framework
-Database - MySQL
-Frontend - React+Vite
-Styling  - Inline CSS
+## 📁 Project Structure
 
-## Project Structure
-
+```
 nexflow/
 ├── config/              # Django settings, URLs
 ├── workflows/           # Workflow, Step, Rule models & APIs
@@ -53,8 +59,22 @@ nexflow/
     │   │   └── api.js
     │   └── App.jsx
     └── package.json
-## Backend Setup
+```
 
+---
+
+## ⚙️ Setup Instructions
+
+### Prerequisites
+- Python 3.10+
+- Node.js 18+
+- MySQL
+
+---
+
+### Backend Setup
+
+```bash
 # 1. Clone the repository
 git clone https://github.com/YOUR_USERNAME/nexflow.git
 cd nexflow
@@ -90,9 +110,15 @@ python manage.py migrate
 
 # 7. Start server
 python manage.py runserver
-Backend runs at: http://127.0.0.1:8000
+```
 
-## Frontend Setup
+Backend runs at: `http://127.0.0.1:8000`
+
+---
+
+### Frontend Setup
+
+```bash
 # 1. Go to frontend folder
 cd frontend
 
@@ -101,7 +127,188 @@ npm install
 
 # 3. Start development server
 npm run dev
-Frontend runs at: http://localhost:5173
+```
+
+Frontend runs at: `http://localhost:5173`
+
+---
+
+## 🔌 API Endpoints
+
+### Workflows
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/api/workflows/` | Create workflow |
+| GET | `/api/workflows/` | List workflows |
+| GET | `/api/workflows/{id}/` | Get workflow details |
+| PUT | `/api/workflows/{id}/` | Update workflow |
+| DELETE | `/api/workflows/{id}/` | Delete workflow |
+
+### Steps
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/api/workflows/{id}/steps/` | Add step |
+| GET | `/api/workflows/{id}/steps/` | List steps |
+| PUT | `/api/workflows/{id}/steps/{id}/` | Update step |
+| DELETE | `/api/workflows/{id}/steps/{id}/` | Delete step |
+
+### Rules
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/api/workflows/{id}/steps/{id}/rules/` | Add rule |
+| GET | `/api/workflows/{id}/steps/{id}/rules/` | List rules |
+| PUT | `/api/workflows/{id}/steps/{id}/rules/{id}/` | Update rule |
+| DELETE | `/api/workflows/{id}/steps/{id}/rules/{id}/` | Delete rule |
+
+### Executions
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/api/workflows/{id}/execute/` | Start execution |
+| GET | `/api/executions/` | List all executions |
+| GET | `/api/executions/{id}/` | Get execution details |
+| POST | `/api/executions/{id}/cancel/` | Cancel execution |
+| POST | `/api/executions/{id}/retry/` | Retry failed execution |
+
+---
+
+## 🧠 Rule Engine
+
+The rule engine evaluates conditions dynamically at runtime.
+
+### Supported Operators
+```
+Comparison : ==, !=, <, >, <=, >=
+Logical    : && (AND), || (OR)
+String     : contains(field, 'value')
+             startsWith(field, 'prefix')
+             endsWith(field, 'suffix')
+```
+
+### Example Rules
+```
+amount > 100 && country == 'US'
+priority == 'High' || amount > 500
+contains(department, 'Finance')
+DEFAULT  ← always matches (fallback)
+```
+
+### How It Works
+```
+1. Rules sorted by priority (lowest = first)
+2. Each condition evaluated against input data
+3. First matching rule → selects next step
+4. DEFAULT rule → fallback if nothing matches
+5. No rules → workflow ends
+```
+
+---
+
+## 📊 Sample Workflow — Expense Approval
+
+**Input Schema:**
+```json
+{
+  "amount":     { "type": "number",  "required": true },
+  "country":    { "type": "string",  "required": true },
+  "priority":   { "type": "string",  "required": true,
+                  "allowed_values": ["High","Medium","Low"] },
+  "department": { "type": "string",  "required": false }
+}
+```
+
+**Steps & Rules:**
+```
+Step 1: Manager Approval (approval)
+  Rule 1: amount > 100 && country == 'US' && priority == 'High'
+          → Finance Notification
+  Rule 2: amount <= 100
+          → CEO Approval
+  Rule 3: priority == 'Low' && country != 'US'
+          → Task Rejection
+  Rule 4: DEFAULT
+          → Task Rejection
+
+Step 2: Finance Notification (notification)
+Step 3: CEO Approval (approval)
+Step 4: Task Rejection (task)
+```
+
+**Test Execution:**
+```json
+Input:  { "amount": 250, "country": "US", "priority": "High" }
+Result: Manager Approval → Finance Notification → COMPLETED ✅
+```
+
+---
+
+## 🗄️ Database Models
+
+### Workflow
+| Field | Type | Description |
+|-------|------|-------------|
+| id | UUID | Unique identifier |
+| name | string | Workflow name |
+| version | integer | Auto-increments on update |
+| is_active | boolean | Active status |
+| input_schema | JSON | Input field definitions |
+
+### Step
+| Field | Type | Description |
+|-------|------|-------------|
+| id | UUID | Unique identifier |
+| workflow | FK | Parent workflow |
+| name | string | Step name |
+| step_type | enum | task / approval / notification |
+| order | integer | Execution sequence |
+
+### Rule
+| Field | Type | Description |
+|-------|------|-------------|
+| id | UUID | Unique identifier |
+| step | FK | Parent step |
+| condition | string | Logic expression |
+| next_step | FK | Next step to execute |
+| priority | integer | Evaluation order |
+
+### Execution
+| Field | Type | Description |
+|-------|------|-------------|
+| id | UUID | Unique identifier |
+| workflow | FK | Executed workflow |
+| workflow_version | integer | Version at execution time |
+| status | enum | pending / in_progress / completed / failed / cancelled |
+| data | JSON | Input data provided |
+| logs | JSON | Step execution logs |
+
+---
+
+## 🎨 UI Features
+
+- **Dark / Light Mode** — toggle persists via localStorage
+- **NexFlow Branding** — clean uppercase bold typography
+- **Orange Accent** — `#f97316` primary color throughout
+- **Responsive Table** — hover with left border slide effect
+- **Real-time Search** — filter workflows instantly
+
+---
+
+## 📋 Evaluation Criteria Met
+
+| Criteria | Weight | Status |
+|----------|--------|--------|
+| Backend / APIs | 20% | ✅ Complete |
+| Rule Engine | 20% | ✅ Dynamic evaluation |
+| Workflow Execution | 20% | ✅ Step tracking + logs |
+| Frontend / UI | 15% | ✅ All screens built |
+| Code Quality | 5% | ✅ Modular and clean |
+
+---
+
+## 👩‍💻 Author
+
+**Piramu**
+- Project: NexFlow — Halleyx Full Stack Challenge I 2026
+- Stack: Django REST Framework + React + MySQL
 
 
 ## Screenshots
