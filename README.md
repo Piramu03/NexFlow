@@ -1,6 +1,4 @@
 # NexFlow — Workflow Automation Engine
-### Halleyx Full Stack Engineer Challenge I — 2026
-
 ---
 
 ## 🚀 Overview
@@ -315,14 +313,17 @@ Result: Manager Approval → Finance Notification → COMPLETED ✅
 <img width="1902" height="910" alt="Screenshot 2026-03-18 092308" src="https://github.com/user-attachments/assets/fe90b4cb-8402-4848-a0fe-6ebdc86f1ed9" />
 <img width="1825" height="906" alt="Screenshot 2026-03-18 092358" src="https://github.com/user-attachments/assets/6f36bb32-7654-4a20-920f-f0c48cf86094" />
 <img width="1876" height="895" alt="Screenshot 2026-03-18 092425" src="https://github.com/user-attachments/assets/755ab547-fe18-48dc-b03a-7007f250c6b1" />
+<img width="1909" height="836" alt="Screenshot 2026-03-18 141452" src="https://github.com/user-attachments/assets/54ab8536-4894-4166-9f23-34a49b50cfd9" />
+<img width="1909" height="905" alt="Screenshot 2026-03-18 141508" src="https://github.com/user-attachments/assets/be87b107-f953-4b44-8277-7c432efdc450" />
+
 <img width="1887" height="875" alt="Screenshot 2026-03-18 092529" src="https://github.com/user-attachments/assets/7ef3a187-ab08-42b3-b2ed-8bbf4555544b" />
 
 <img width="1905" height="835" alt="Screenshot 2026-03-18 092547" src="https://github.com/user-attachments/assets/c981200a-cf0b-404e-a82a-c0ae4e8ca2de" />
 
 ## 🎬 Demo Video
 
-https://github.com/user-attachments/assets/6b1b4aed-3250-4ab1-aa23-144104ba76f5
-https://github.com/user-attachments/assets/417038ba-cce0-498a-9039-1f852411a413
+https://github.com/user-attachments/assets/cda4ff15-120d-47d7-adb6-f90e68a5e188
+
 
 
 
